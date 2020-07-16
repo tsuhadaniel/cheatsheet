@@ -70,6 +70,11 @@ Delete branch
 git branch -d [branch name]
 ```
 
+Update local repository
+```
+git pull --rebase origin master
+```
+
 Update remote branch
 ```
 git push origin 
