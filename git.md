@@ -79,3 +79,4 @@ git push origin
 Add remote server
 ```
 git remote add origin git@github.com:tsuhadaniel/cheatsheet.git
+```
