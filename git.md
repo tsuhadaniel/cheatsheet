@@ -33,6 +33,7 @@ Commit
 ```
 git commit -m "[message]"
 git commit --amend -m "[message]"
+git commit --amend --no-edit
 ```
 
 Undo commit
