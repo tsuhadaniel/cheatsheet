@@ -31,13 +31,13 @@ for y in range(0, h):
 
 Process video
 ```python
-cap = cv2.VideoCapture('input')
+cap = cv2.VideoCapture('input.mp4')
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
 fourcc = cv2.VideoWriter_fourcc(*'MP4V')
 res=(int(width), int(height))
-out = cv2.VideoWriter(root_dir + 'output.mp4', fourcc, 20.0, res)
+out = cv2.VideoWriter('output.mp4', fourcc, 20.0, res)
 
 while (cap.isOpened()):
 
