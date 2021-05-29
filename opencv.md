@@ -32,17 +32,17 @@ for y in range(0, h):
 Process video
 ```python
 cap = cv2.VideoCapture('input.mp4')
+fps = cap.get(cv2.CAP_PROP_FPS)
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+resolution = (int(width), int(height))
 
-fourcc = cv2.VideoWriter_fourcc(*'MP4V')
-res=(int(width), int(height))
-out = cv2.VideoWriter('output.mp4', fourcc, 20.0, res)
+codec = cv2.VideoWriter_fourcc(*'MP4V')
+out = cv2.VideoWriter(root_dir + 'output.mp4', codec, fps, resolution)
 
 while (cap.isOpened()):
-
+    
     ret, frame = cap.read()
-
     if ret == True:
         out.write(frame)
 
