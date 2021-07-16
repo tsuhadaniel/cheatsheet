@@ -14,6 +14,17 @@ Start Kafka
 bin/kafka-server-start.sh config/server.properties
 ```
 
+Create a topic
+```
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --topic topic-name [--replication-factor 1 --partitions 1]
+```
+
+List topics
+```
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+bin/kafka-topics.sh --describe --bootstrap-server localhost:9092
+```
+
 Start CLI Producer
 ```
 bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic topic-name [--group group-name]
