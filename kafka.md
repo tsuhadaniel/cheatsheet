@@ -38,10 +38,18 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic-na
 Info
 ```
 bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe [--topic topic-name]
-bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe [--group consumer-group-name]
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe [--group consumer-group-name] [--all-groups]
 ```
 
 Change
 ```
 bin/kafka-topics.sh --bootstrap-server localhost:9092 --alter [--topic topic-name --partitions 2]
+```
+
+### Config
+
+```
+nano config/server.properties
+
+num.partitions=1
 ```
