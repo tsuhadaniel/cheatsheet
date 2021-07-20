@@ -48,8 +48,17 @@ bin/kafka-topics.sh --bootstrap-server localhost:9092 --alter [--topic topic-nam
 
 ### Config
 
+Kafka
 ```
 nano config/server.properties
 
 num.partitions=1
+log.dirs=/tmp/kafka-logs
+```
+
+Zookeeper
+```
+nano conifg/zookeeper.properties
+
+dataDir=/tmp/zookeeper
 ```
