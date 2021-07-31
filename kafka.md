@@ -43,7 +43,7 @@ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe [--gro
 
 Change
 ```
-bin/kafka-topics.sh --bootstrap-server localhost:9092 --alter [--topic topic-name --partitions 2]
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --alter [--topic topic-name --partitions 2 --replication-factor 2]
 ```
 
 ### Config
@@ -52,6 +52,11 @@ Kafka
 ```
 nano config/server.properties
 
+broker.id=0
+default.replication.factor=3
+listeners=PLAINTEXT://:9092
+offsets.topic.replication.factor=3
+transaction.state.log.replication.factor=3
 num.partitions=1
 log.dirs=/tmp/kafka-logs
 ```
