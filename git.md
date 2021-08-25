@@ -87,6 +87,11 @@ Update local repository
 git pull --rebase origin master
 ```
 
+Edit log
+```
+git rebase -i [HEAD~n|hash]
+```
+
 Update remote branch
 ```
 git push [remote (origin)] [branch]
