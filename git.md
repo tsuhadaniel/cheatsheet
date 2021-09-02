@@ -121,3 +121,8 @@ Tag
 git tag -a [tag]
 git push origin [tag]
 ```
+
+Binary Search
+```
+git bisect [help|start|bad|good|new|old|terms|skip|next|reset|visualize|view|replay|log|run]
+```
