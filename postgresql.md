@@ -1,5 +1,7 @@
 ## PostgreSQL
 
+### Configuration
+
 Change default user password
 ```
 sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres'"
@@ -9,6 +11,8 @@ Command line
 ```
 sudo -u postgres psql
 ```
+
+### Basic commands
 
 Database
 ```
@@ -69,4 +73,25 @@ WHERE
 ```
 ```SQL
 SELECT * FROM [table] WHERE field = 'value_1' OR field = 'value_2';
+```
+
+### Relationships
+
+Primary key
+```SQL
+CREATE TABLE [table] (
+  id SERIAL PRIMARY KEY,
+  field VARCHAR(10)
+);
+```
+
+Foreing key
+```SQL
+CREATE TABLE [table] (
+  id_a INTEGER,
+  id_b INTEGER,
+  PRIMARY KEY (id_a, id_b),
+  FOREIGN KEY (id_a) REFERENCES table_a (id) ON UPDATE [RESTRICT|CASCADE],
+  FOREIGN KEY (id_b) REFERENCES table_b (id) ON DELETE[RESTRICT|CASCADE]
+);
 ```
