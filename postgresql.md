@@ -18,7 +18,7 @@ DROP DATABASE [name];
 
 Table ([Data types](https://www.postgresql.org/docs/current/datatype.html))
 ```SQL
-CREATE TABLE [name] (
+CREATE TABLE [table] (
   type_serial SERIAL, --autoincrementing four-byte integer
   type_varchar VARCHAR(255), --variable-length character string
   type_char CHAR(10), --fixed-length character string
@@ -37,4 +37,36 @@ Insert
 ```SQL
 INSERT INTO [table] (field_1, field_2, field_3)
 VALUES ('value_1', 'value_2', 'value_3');
+```
+
+Update
+```SQL
+UPDATE [table]
+SET
+  field_1 = 'new_value_1',
+  field_2 = 'new_value_2'
+WHERE
+  id = 1;
+```
+
+Select where
+```SQL
+SELECT
+  field_1 AS "Field 1",
+  field_2 AS field_2_name
+FROM [table]
+WHERE
+  id = 1
+  AND field_1 <> 'value' --different
+  AND field_2 != 'value' --different
+  AND field_3 LIKE 'va_ue' --any character
+  AND field_4 LIKE '%ue' --any string
+  AND field_5 NOT LIKE 'va_ue'
+  AND field_6 IS NULL
+  AND field_7 IS NOT NULL
+  AND field_8 > 10 --comparators (>, >=, <, <=)
+  AND field_10 BETWEEN 10 AND 20;
+```
+```SQL
+SELECT * FROM [table] WHERE field = 'value_1' OR field = 'value_2';
 ```
