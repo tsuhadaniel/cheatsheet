@@ -12,7 +12,7 @@ Command line
 sudo -u postgres psql
 ```
 
-### Basic commands
+### Basic
 
 Database
 ```
@@ -92,6 +92,25 @@ CREATE TABLE [table] (
   id_b INTEGER,
   PRIMARY KEY (id_a, id_b),
   FOREIGN KEY (id_a) REFERENCES table_a (id) ON UPDATE [RESTRICT|CASCADE],
-  FOREIGN KEY (id_b) REFERENCES table_b (id) ON DELETE[RESTRICT|CASCADE]
+  FOREIGN KEY (id_b) REFERENCES table_b (id) ON DELETE [RESTRICT|CASCADE]
 );
+```
+
+Join
+```SQL
+CREATE TABLE table_a (
+  id SERIAL PRIMARY KEY,
+  field_a VARCHAR(10)
+);
+```
+```SQL
+CREATE TABLE table_b (
+  id SERIAL PRIMARY KEY,
+  id_a INTEGER REFERENCES table_a (id),
+  field_b VARCHAR(10)
+);
+```
+```SQL
+SELECT * FROM table_b
+JOIN table_a ON table_a.id = table_b.id_a;
 ```
