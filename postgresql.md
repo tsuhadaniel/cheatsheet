@@ -90,6 +90,7 @@ Foreing key
 CREATE TABLE [table] (
   id_a INTEGER,
   id_b INTEGER,
+  id_c INTEGER REFERENCES table_c (id),
   PRIMARY KEY (id_a, id_b),
   FOREIGN KEY (id_a) REFERENCES table_a (id) ON UPDATE [RESTRICT|CASCADE],
   FOREIGN KEY (id_b) REFERENCES table_b (id) ON DELETE [RESTRICT|CASCADE]
@@ -102,15 +103,67 @@ CREATE TABLE table_a (
   id SERIAL PRIMARY KEY,
   field_a VARCHAR(10)
 );
-```
-```SQL
+
 CREATE TABLE table_b (
   id SERIAL PRIMARY KEY,
   id_a INTEGER REFERENCES table_a (id),
   field_b VARCHAR(10)
 );
-```
-```SQL
+
 SELECT * FROM table_b
 JOIN table_a ON table_a.id = table_b.id_a;
+```
+
+```SQL
+CREATE TABLE table_a (
+  id SERIAL PRIMARY KEY,
+  field_a VARCHAR(10)
+);
+
+CREATE TABLE table_b (
+  id SERIAL PRIMARY KEY,
+  field_b VARCHAR(10)
+);
+
+CREATE TABLE relationship (
+  id_a INTEGER REFERENCES table_a (id),
+  id_b INTEGER REFERENCES table_b (id),
+  PRIMARY KEY (id_a, id_b)
+);
+
+SELECT table_a.field_a, table_b.field_b
+FROM table_a
+JOIN relationship ON relationship.id_a = table_a.id
+JOIN table_b ON table_b.id = relationship.id_b;
+```
+
+```SQL
+
+INSERT INTO table_a VALUES (1, 'a_1');
+INSERT INTO table_a VALUES (2, 'a_2');
+INSERT INTO table_a VALUES (3, 'a_3');
+INSERT INTO table_a VALUES (4, 'a_4');
+
+INSERT INTO table_b VALUES (3, 'b_3');
+INSERT INTO table_b VALUES (4, 'b_4');
+INSERT INTO table_b VALUES (5, 'b_5');
+INSERT INTO table_b VALUES (6, 'b_6');
+
+SELECT * FROM table_a;
+SELECT * FROM table_b;
+
+SELECT * FROM table_a
+JOIN table_b ON table_b.id = table_a.id;
+
+SELECT * FROM table_a
+LEFT JOIN table_b ON table_b.id = table_a.id;
+
+SELECT * FROM table_a
+RIGHT JOIN table_b ON table_b.id = table_a.id;
+
+SELECT * FROM table_a
+FULL JOIN table_b ON table_b.id = table_a.id;
+
+SELECT * FROM table_a
+CROSS JOIN table_b;
 ```
