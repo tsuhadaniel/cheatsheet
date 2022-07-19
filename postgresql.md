@@ -71,7 +71,12 @@ WHERE
   AND field_6 IS NULL
   AND field_7 IS NOT NULL
   AND field_8 > 10 --comparators (>, >=, <, <=)
-  AND field_10 BETWEEN 10 AND 20;
+  AND field_10 BETWEEN 10 AND 20
+ORDER BY
+  field_1 ASC
+  field_2 DESC
+LIMIT 5
+OFFSET 2;
 ```
 ```SQL
 SELECT * FROM table_name WHERE field = 'value_1' OR field = 'value_2';
