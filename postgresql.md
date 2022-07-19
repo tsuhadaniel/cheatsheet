@@ -16,13 +16,13 @@ sudo -u postgres psql
 
 Database
 ```
-CREATE DATABASE [name];
-DROP DATABASE [name];
+CREATE DATABASE database_name;
+DROP DATABASE database_name;
 ```
 
 Table ([Data types](https://www.postgresql.org/docs/current/datatype.html))
 ```SQL
-CREATE TABLE [table] (
+CREATE TABLE table_name (
   type_serial SERIAL, --autoincrementing four-byte integer
   type_varchar VARCHAR(255), --variable-length character string
   type_char CHAR(10), --fixed-length character string
@@ -33,19 +33,21 @@ CREATE TABLE [table] (
   type_boolean BOOLEAN, --logical Boolean (true/false)
   type_date DATE, --calendar date (year, month, day) (2000-12-31)
   type_time TIME, --time of day (no time zone) (23:59:59.999)
-  type_timestamp TIMESTAMP --date and time (no time zone) (2000-12-31 23:59:59)
+  type_timestamp TIMESTAMP --date and time (no time zone) (2000-12-31 23:59:59),
+  unique_value VARCHAR(255) UNIQUE,
+  not_null_value VARCHAR(255) NOT NULL
 );
 ```
 
 Insert
 ```SQL
-INSERT INTO [table] (field_1, field_2, field_3)
+INSERT INTO table_name (field_1, field_2, field_3)
 VALUES ('value_1', 'value_2', 'value_3');
 ```
 
 Update
 ```SQL
-UPDATE [table]
+UPDATE table_name
 SET
   field_1 = 'new_value_1',
   field_2 = 'new_value_2'
@@ -58,7 +60,7 @@ Select where
 SELECT
   field_1 AS "Field 1",
   field_2 AS field_2_name
-FROM [table]
+FROM table_name
 WHERE
   id = 1
   AND field_1 <> 'value' --different
@@ -72,14 +74,14 @@ WHERE
   AND field_10 BETWEEN 10 AND 20;
 ```
 ```SQL
-SELECT * FROM [table] WHERE field = 'value_1' OR field = 'value_2';
+SELECT * FROM table_name WHERE field = 'value_1' OR field = 'value_2';
 ```
 
 ### Relationships
 
 Primary key
 ```SQL
-CREATE TABLE [table] (
+CREATE TABLE table_name (
   id SERIAL PRIMARY KEY,
   field VARCHAR(10)
 );
@@ -87,7 +89,7 @@ CREATE TABLE [table] (
 
 Foreing key
 ```SQL
-CREATE TABLE [table] (
+CREATE TABLE table_name (
   id_a INTEGER,
   id_b INTEGER,
   id_c INTEGER REFERENCES table_c (id),
