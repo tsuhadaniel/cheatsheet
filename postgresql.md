@@ -145,6 +145,15 @@ JOIN table_b ON table_b.id = relationship.id_b;
 ```
 
 ```SQL
+CREATE TABLE table_a (
+  id INTEGER PRIMARY KEY,
+  field_a VARCHAR(10) UNIQUE
+);
+
+CREATE TABLE table_b (
+  id INTEGER PRIMARY KEY,
+  field_b VARCHAR(10) NOT NULL
+);
 
 INSERT INTO table_a VALUES (1, 'a_1');
 INSERT INTO table_a VALUES (2, 'a_2');
