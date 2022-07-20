@@ -183,3 +183,40 @@ FULL JOIN table_b ON table_b.id = table_a.id;
 SELECT * FROM table_a
 CROSS JOIN table_b;
 ```
+
+### Aggregation
+
+Functions ([List](https://www.postgresql.org/docs/9.5/functions-aggregate.html))
+```SQL
+SELECT
+  COUNT(field),
+  SUM(field),
+  MAX(field),
+  MIN(field),
+  ROUND(AVG(field), 2) --decimal digits
+FROM table_name;
+```
+
+Distinct
+```SQL
+SELECT DISTINCT field FROM table_name; --exclude dublications for selected fields (Do not use with GROUP BY)
+```
+
+Group by
+```SQL
+SELECT field FROM table_name
+GROUP BY field;
+```
+
+```SQL
+SELECT field, count(field)
+FROM table_name
+GROUP BY field;
+```
+
+```SQL
+SELECT field, count(field)
+FROM table_name
+GROUP BY field
+HAVING COUNT(field) = 1; --same WHERE statements
+```
