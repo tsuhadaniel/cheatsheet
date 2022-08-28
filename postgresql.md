@@ -42,7 +42,8 @@ CREATE TABLE table_name (
 Insert
 ```SQL
 INSERT INTO table_name (field_1, field_2, field_3)
-VALUES ('value_1', 'value_2', 'value_3');
+VALUES ('value_1a', 'value_2b', 'value_3c'),
+VALUES ('value_1a', 'value_2b', 'value_3c');
 ```
 
 Update
