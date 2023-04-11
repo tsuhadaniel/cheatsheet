@@ -88,7 +88,7 @@ SELECT * FROM table_name WHERE field = 'value_1' OR field = 'value_2';
 SELECT * FROM table_name WHERE field IN ('value_1', 'value_2'); --OR
 ```
 ```SQL
-SELECT * FROM (subquery) AS subquery_table_name WHERE field IN (subquery);
+SELECT * FROM ([subquery]) AS subquery_table_name WHERE field IN ([subquery]);
 ```
 
 ### Relationships
@@ -230,3 +230,7 @@ GROUP BY field
 HAVING COUNT(field) = 1; --same WHERE statements
 ```
 
+### Views
+```SQL
+CREATE VIEW view_name AS [query];
+```
