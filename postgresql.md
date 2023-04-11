@@ -14,6 +14,8 @@ sudo -u postgres psql
 
 ### Basic
 
+Functions ([Documentation](https://www.postgresql.org/docs/current/functions.html))
+
 Database
 ```
 CREATE DATABASE database_name;
@@ -227,3 +229,4 @@ FROM table_name
 GROUP BY field
 HAVING COUNT(field) = 1; --same WHERE statements
 ```
+
