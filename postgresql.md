@@ -82,6 +82,12 @@ OFFSET 2;
 ```SQL
 SELECT * FROM table_name WHERE field = 'value_1' OR field = 'value_2';
 ```
+```SQL
+SELECT * FROM table_name WHERE field IN ('value_1', 'value_2'); --OR
+```
+```SQL
+SELECT * FROM (subquery) AS subquery_table_name WHERE field IN (subquery);
+```
 
 ### Relationships
 
@@ -179,10 +185,10 @@ SELECT * FROM table_a
 RIGHT JOIN table_b ON table_b.id = table_a.id;
 
 SELECT * FROM table_a
-FULL JOIN table_b ON table_b.id = table_a.id;
+FULL JOIN table_b ON table_b.id = table_a.id; --left join + right joint
 
 SELECT * FROM table_a
-CROSS JOIN table_b;
+CROSS JOIN table_b; --cartesian product
 ```
 
 ### Aggregation
@@ -200,7 +206,7 @@ FROM table_name;
 
 Distinct
 ```SQL
-SELECT DISTINCT field FROM table_name; --exclude dublications for selected fields (Do not use with GROUP BY)
+SELECT DISTINCT field FROM table_name; --exclude duplications for selected fields (Do not use with GROUP BY)
 ```
 
 Group by
