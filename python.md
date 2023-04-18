@@ -78,3 +78,36 @@ Jupyter
 jupyter-notebook
 jupyter-lab
 ```
+
+## Object Orientation
+
+```python
+class ClassName:
+
+    static_value = 123
+
+    # Constructor
+    def __init__(self, param_1, param_2):
+        self.__param_1 = param_1 # Private attribute
+        self.param_2 = param_2 # Public attrubute
+
+    def public_method(self):
+        pass
+
+    def __private_method(self):
+        pass
+
+    # Get [some_var = instance.param_1]
+    @property
+    def param_1(self):
+        return self.__param_1
+
+    # Set [instance.param_1 = 'some_value']
+    @param_1.setter 
+    def param_1(self, param_1):
+        self.__param_1 = param_1
+
+    @staticmethod
+    def static_method():
+        return 'abc'
+```
