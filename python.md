@@ -82,19 +82,22 @@ jupyter-lab
 ## Object Orientation
 
 ```python
-class ClassName:
+class ClassName(SuperClass1, SuperClass2):
 
-    static_value = 123
+    class_attribute = 123
 
     # Constructor
-    def __init__(self, param_1, param_2):
-        self.__param_1 = param_1 # Private attribute
-        self.param_2 = param_2 # Public attrubute
+    def __init__(self, param_1, param_2, param_3):
+        super().__init__('super_class_1_parameters') # SuperClass1 constructor
+        super().__init__('super_class_2_parameters') # SuperClass2 constructor
+        self.__param_1 = param_1 # Private attribute (name mangling)
+        self._param_2 = param_2 # Private attribute (convetion)
+        self.param_3 = param_3 # Public attribute
 
     def public_method(self):
         pass
 
-    def __private_method(self):
+    def __private_method(self): # Name mangling
         pass
 
     # Get [some_var = instance.param_1]
@@ -107,7 +110,11 @@ class ClassName:
     def param_1(self, param_1):
         self.__param_1 = param_1
 
-    @staticmethod
+    @classmethod # Can access class and instances
+    def class_method(cls): # cls is equivalent to self but for classes 
+        return f'Class attribute value: {cls.class_attribute}'
+
+    @staticmethod # Cannot access class and instances
     def static_method():
         return 'abc'
 ```
