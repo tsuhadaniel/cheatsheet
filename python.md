@@ -81,6 +81,7 @@ jupyter-lab
 
 ## Object Orientation
 
+Class
 ```python
 class ClassName(SuperClass1, SuperClass2):
 
@@ -110,11 +111,52 @@ class ClassName(SuperClass1, SuperClass2):
     def param_1(self, param_1):
         self.__param_1 = param_1
 
+    def get_class_attribute(self):
+        return __class__.class_attribute
+
     @classmethod # Can access class and instances
     def class_method(cls): # cls is equivalent to self but for classes 
         return f'Class attribute value: {cls.class_attribute}'
 
     @staticmethod # Cannot access class and instances
-    def static_method():
+    def static_method(): # no self
         return 'abc'
+```
+
+Abstract class (can be used as interface)
+```python
+from abc import ABCMeta, abstractmethod
+
+class AbstractClass(metaclass = ABCMeta):
+
+    @abstractmethod
+    def method(self):
+        pass
+```
+
+Mixins
+```python
+import json
+
+class JSONSerializableMixin:
+    def to_json(self):
+        return json.dumps(self.__dict__)
+    
+    @classmethod
+    def from_json(cls, json_str):
+        obj_dict = json.loads(json_str)
+        return cls(**obj_dict)
+
+class Person(JSONSerializableMixin):
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+person = Person("Alice", 30)
+json_str = person.to_json()
+print(json_str)  # {"name": "Alice", "age": 30}
+
+new_person = Person.from_json(json_str)
+print(new_person.name)  # Alice
+print(new_person.age)  # 30
 ```
