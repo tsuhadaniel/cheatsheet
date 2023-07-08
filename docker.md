@@ -35,6 +35,9 @@ docker ps -a
 Run (create a new container)
 ```
 docker run [options] [image] [command] [args]
+-it
+--name
+--network
 ```
 
 Start (just if the container already exists)
@@ -57,6 +60,12 @@ Remove
 ```
 docker rm [container]
 docker rm [container] --force
+docker container rm $(docker ps -aq) --force # stop and remove all
+```
+
+Inspect
+```
+docker inspect [container]
 ```
 
 Execute a command on a running container
@@ -117,6 +126,21 @@ tmpfs (memory)
 ```
 docker run --tmpfs=[temp dir][image]
 docker run --mount type=tmpfs,destination=[container dir] [image]
+```
+
+#### Network
+
+List
+```
+docker network ls
+```
+
+Create
+```
+docker network create --drive [bridge|host|none] [name]
+# bridge: Isolated network (can use container name as address)
+# host: Local network (localhost)
+# none: No network
 ```
 
 ### Dockerfile
