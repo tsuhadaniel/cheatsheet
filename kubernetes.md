@@ -11,10 +11,14 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 
 ```
 kubectl get pods --watch
-kubectl describe [pod]
+kubectl describe [resource type] [pod]
 kubectl run [pod] --image=[docker image]
 kubectl edit pod [pod]
+
 kubectl apply -f [file]
+kubectl delete -f [file]
+
+kubectl exec -it [pod] -- [command]
 ```
 
 ### File
