@@ -1,4 +1,4 @@
-## Kubernets
+## Kubernetes
 
 ### Install
 
@@ -10,7 +10,7 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 ### Commands
 
 ```
-kubectl get pods --watch
+kubectl get [resource type (pods|service)] --watch
 kubectl describe [resource type] [pod]
 kubectl run [pod] --image=[docker image]
 kubectl edit pod [pod]
@@ -21,8 +21,9 @@ kubectl delete -f [file]
 kubectl exec -it [pod] -- [command]
 ```
 
-### File
+### Files
 
+Pods
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -32,6 +33,8 @@ spec:
   containers:
     - name: [container name]
       image: [docker image]
+      ports:
+        - containerPort: [port]
 ```
 
 ### Minikube
