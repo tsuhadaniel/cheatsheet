@@ -41,6 +41,7 @@ spec:
 
 ```
 minikube start
+minikube start --driver=docker --container-runtime=containerd
 minikube stop
 minikube pause
 minikube unpause
