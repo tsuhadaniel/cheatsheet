@@ -23,18 +23,35 @@ kubectl exec -it [pod] -- [command]
 
 ### Files
 
-Pods
+Pods (wrapper for containers)
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
   name: [pod name]
+  labels:
+    [key]: [value]
 spec:
   containers:
     - name: [container name]
       image: [docker image]
       ports:
         - containerPort: [port]
+```
+
+Cluster IP (provides a stable IP for pods)
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: [service cluster IP name]
+spec:
+  type: ClusterIP
+  selector:
+    [key]: [value] # use labels as selector
+  ports:
+    - port: [external port]
+      targetPort: [internal port]
 ```
 
 ### Minikube
