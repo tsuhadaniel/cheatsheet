@@ -23,7 +23,7 @@ kubectl exec -it [pod] -- [command]
 
 ### Files
 
-Pods (wrapper for containers)
+#### Pods (wrapper for containers)
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -39,7 +39,7 @@ spec:
         - containerPort: [port]
 ```
 
-Cluster IP (provides a stable IP for pods)
+#### Cluster IP (provides a stable IP for pods)
 ```yaml
 apiVersion: v1
 kind: Service
@@ -52,6 +52,27 @@ spec:
   ports:
     - port: [external port]
       targetPort: [internal port]
+```
+
+#### Node Port (allows external communication) (works as a cluster IP)
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: [service cluster IP name]
+spec:
+  type: NodePort
+  selector:
+    [key]: [value] # use labels as selector
+  ports:
+    - port: [external port (cluster)]
+      targetPort: [internal port]
+      nodePort: [external port (external)]
+```
+
+To get the IP
+```bash
+kubectl get nodes -o wide # INTERNAL-IP
 ```
 
 ### Minikube
