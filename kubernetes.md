@@ -44,7 +44,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: [service cluster IP name]
+  name: [cluster IP name]
 spec:
   type: ClusterIP
   selector:
@@ -59,7 +59,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: [service cluster IP name]
+  name: [node port name]
 spec:
   type: NodePort
   selector:
@@ -73,6 +73,22 @@ spec:
 To get the IP
 ```bash
 kubectl get nodes -o wide # INTERNAL-IP
+```
+
+#### Load balancer (allows external communication) (works as a cluster IP)
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: [load balancer name]
+spec:
+  type: LoadBalancer
+  selector:
+    [key]: [value] # use labels as selector
+  ports:
+    - port: [external port (cluster)]
+      targetPort: [internal port]
+      nodePort: [external port (external)]
 ```
 
 ### Minikube
