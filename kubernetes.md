@@ -37,6 +37,17 @@ spec:
       image: [docker image]
       ports:
         - containerPort: [port]
+  env:
+    - name: [key] # local declaration
+      value: [value]
+    - name: [key] # import one from config map
+      valueFrom:
+        configMapKeyref:
+          name: [config map name]
+          key: [config map key]
+  envFrom: # import all from config map
+    - configMapRef:
+        name: [config map name]
 ```
 
 #### Cluster IP (provides a stable IP for pods)
