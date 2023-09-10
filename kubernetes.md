@@ -91,6 +91,17 @@ spec:
       nodePort: [external port (external)]
 ```
 
+#### Config map (stores environment variables)
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: [config map name]
+data:
+  [key]: [value]
+  [key]: [value]
+```
+
 ### Minikube
 
 ```
