@@ -10,8 +10,9 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 ### Commands
 
 ```
-kubectl get [resource type (pods|service)] --watch
-kubectl describe [resource type] [pod]
+kubectl get [resource type (pods|services|replicasets)] --watch
+kubectl delete [resource type] [resource name]
+kubectl describe [resource type] [resource name]
 kubectl run [pod] --image=[docker image]
 kubectl edit pod [pod]
 
@@ -111,6 +112,33 @@ metadata:
 data:
   [key]: [value]
   [key]: [value]
+```
+
+#### Replica set (manager replicas of the same pod)
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: [replica set name]
+spec:
+  template:
+    metadata:
+      name: [pod name (template)]
+      labels:
+        [key]: [value]
+    spec:
+      containers:
+      - name: [container name]
+        image: [docker image]
+        ports:
+        - containerPort: [external port (cluster)]
+        envFrom:
+        - configMapRef:
+            name: [config map name]
+  replicas: [number of replicas]
+  selector:
+    matchLabels:
+      [key]: [value]
 ```
 
 ### Minikube
