@@ -9,7 +9,7 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 
 ### Commands
 
-```
+```bash
 kubectl get [resource type (pods|services|replicasets)] --watch
 kubectl delete [resource type] [resource name]
 kubectl describe [resource type] [resource name]
@@ -81,9 +81,8 @@ spec:
       targetPort: [internal port]
       nodePort: [external port (external)]
 ```
-
-To get the IP
 ```bash
+# To get the IP
 kubectl get nodes -o wide # INTERNAL-IP
 ```
 
@@ -167,7 +166,7 @@ spec:
     matchLabels:
       [key]: [value]
 ```
-```
+```bash
 # List versions
 kubectl rollout history deployment [deployment name]
 
@@ -183,7 +182,7 @@ kubectl rollout undo deployment [deployment name] --to-revision=[revision number
 
 ### Minikube
 
-```
+```bash
 minikube start
 minikube start --driver=docker --container-runtime=containerd
 minikube stop
