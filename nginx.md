@@ -27,6 +27,3 @@ server {
     error_page 400 401 403 404 /error.html;
 }
 ```
-
-```
-```
