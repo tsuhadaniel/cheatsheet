@@ -141,6 +141,46 @@ spec:
       [key]: [value]
 ```
 
+#### Deployment (same as a replica set, but with versioning controls)
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: [deployment name]
+spec:
+  template:
+    metadata:
+      name: [pod name (template)]
+      labels:
+        [key]: [value]
+    spec:
+      containers:
+      - name: [container name]
+        image: [docker image]
+        ports:
+        - containerPort: [external port (cluster)]
+        envFrom:
+        - configMapRef:
+            name: [config map name]
+  replicas: [number of replicas]
+  selector:
+    matchLabels:
+      [key]: [value]
+```
+```
+# List versions
+kubectl rollout history deployment [deployment name]
+
+# Deploy and save history
+kubectl apply -f [file] --record
+
+# Edit change cause
+kubectl annotate deployment [deployment name] kubernets.io/change-cause="[message]"
+
+# Rollback to a specific version
+kubectl rollout undo deployment [deployment name] --to-revision=[revision number]
+```
+
 ### Minikube
 
 ```
