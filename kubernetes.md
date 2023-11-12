@@ -20,6 +20,7 @@ kubectl apply -f [file]
 kubectl delete -f [file]
 
 kubectl exec -it [pod] -- [command]
+kubectl exec -it [pod] --container [container-name] -- [command]
 ```
 
 ### Files
@@ -180,6 +181,31 @@ kubectl annotate deployment [deployment name] kubernets.io/change-cause="[messag
 kubectl rollout undo deployment [deployment name] --to-revision=[revision number]
 ```
 
+#### Volume (share files among containers inside the same pod)
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: [volume-name]
+spec:
+  containers:
+  - name: [container name 1]
+    image: [docker image 1]
+    volumeMounts:
+    - name: [volume name]
+     mountPath: [container path 1]
+  - name: [container name 2]
+    image: [docker image 2]
+    volumeMounts:
+    - name: [volume name]
+     mountPath: [container path 2]
+  volumes:
+  - name: [volume name]
+    hostPath:
+      path: [volume path (inside minikube)]
+      type: DirectoryOrCreate
+```
+
 ### Minikube
 
 ```bash
@@ -188,4 +214,5 @@ minikube start --driver=docker --container-runtime=containerd
 minikube stop
 minikube pause
 minikube unpause
+minikube ssh
 ```
