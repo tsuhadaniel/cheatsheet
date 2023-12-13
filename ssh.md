@@ -87,8 +87,3 @@ Where _pi_ is user, _ ~/.ssh/id_rsa.pub_ is the location of the public key on th
 ## Setting up VSCode for woring on remote machienes
  
 
-
-
-
-
-
