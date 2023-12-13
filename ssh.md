@@ -77,13 +77,15 @@ ak@AKM2 .ssh %
 ```
 
 ### Distributing public keys
-In order to distribute public keys from the local machine to remote (host) server, requires adding the the public key in /Users/user/.ssh/id_rsa.pub from the local machine to the host machine under ~/.ssh/ath
+In order to distribute public keys from the local machine to remote (host) server, requires adding the the public key in /Users/user/.ssh/id_rsa.pub from the local machine to the host machine under ~/.ssh/athorized keys. Alternatively, you can execute the command below from your local machine in order to add the public key to the remote server.
 
+```
+ pi@raspberrypi:~ $ ssh-copy-id -i ~/.ssh/id_rsa.pub pi@192.168.0.123
+```
+Where _pi_ is user, _ ~/.ssh/id_rsa.pub_ is the location of the public key on the local machine and hthe IP address corresponds to the remote server. 
 
-* Setting up ssh connection with github
-* Setting up ssh connection with rapsberry pi
-* Setting up VSCode for woring on remote machienes
-* 
+## Setting up VSCode for woring on remote machienes
+ 
 
 
 
