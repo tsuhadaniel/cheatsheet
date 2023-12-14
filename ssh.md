@@ -1,11 +1,11 @@
-## SSH
+# SSH
 
 Topics
 
-### What is ssh
+## What is ssh
 The secure shell protocol (ssh) is is a cryptographic network protocol for operating secure communications over and unsercured network. ssh application (like openssh, etc) are based on a client-server architecture. The ssh server listens to the network for SSH requests and provides a cli for the system running the server. the ssh client is the aplication that conects to remote servers.
 
-#### SSH Authentication using password
+### SSH Authentication using password
 SSH can authenticate users by two ways: passwords or SSH Keys. This is a less secure method but it is necessary in order to set up the remote computer for SSH key pair. For this method you need to know: 1. the ip address of the remote computer, 2. the user name, and its password. In the example below I'm connecting to user pi in a raspberry pi connected to local network.
 
 ```
@@ -35,11 +35,10 @@ When you're ready to terminate the connection just type the *Ctrl-d* key binding
 29 pi@raspberrypi:~ $ exit
 ```
 
+---
 
-### SSH Authentication using key pairs
-SSH authentication using key pair is more secured and the preferred method over password login. SSH keys are are key pair are comprises of a public and private keys. Publics keys can be shared without concern, while private keys need protected.
-
-
+## SSH Authentication using key pairs
+SSH authentication using key pair is more secured and the preferred method over password login. SSH keys are a pair of public and private keys that enable authentication with the remote machine. Public keys can be shared without concern, while private keys need protected.
 
 ### Generating ssh key pair and distributing public keys
 Key pairs are generated using the ssh-keygen command as follows:
@@ -49,7 +48,7 @@ $ ssh-keygen
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/ninovillaflor/.ssh/id_rsa):
 ```
-Enter and renter the passphrase when promted (if applicable). The whole interaction should look like this:
+Enter and renter the passphrase when promted (if applicable). You can add or remove the passphrase after generating the key pair, see blow. The whole interaction should look like this:
 
 ```
 ak@AKM2 .ssh % ssh-keygen
@@ -84,6 +83,28 @@ In order to distribute public keys from the local machine to remote (host) serve
 ```
 Where _pi_ is user, _ ~/.ssh/id_rsa.pub_ is the location of the public key on the local machine and hthe IP address corresponds to the remote server. 
 
-## Setting up VSCode for woring on remote machienes
- 
+### Managing key pair passphrases
 
+Sometimes you want to add or remove a passphrases associated to the key pair you just generated. For example, accessing a remote host via VSCode without passphrase makes things easier. 
+
+To add change or remove a passhphrase to an existing key pair exeucute the following command:
+
+```
+$ ssh-keygen -p -f ~/ssh/id_rsa
+> Enter old passphrase: [Type old passphrase]
+> Key has comment 'your_email@example.com'
+> Enter new passphrase (empty for no passphrase): [Type new passphrase]
+> Enter same passphrase again: [Repeat the new passphrase]
+> Your identification has been saved with the new passphrase.
+```
+
+## Setting up VSCode for woring on remote machines
+
+In order to setup development on remote host on VS code follow these steps: 
+
+1. On VSCode install following extension: [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
+2. Make sure you set up SSH between machines (see above)
+3. Select *Remote-SSH: Connect to Host...* from the command palette
+4. Enter the remote host name, e.g. pi@raspberry, and hit enter. 
+5. You're done!
+ 
