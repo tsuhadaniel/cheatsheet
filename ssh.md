@@ -130,6 +130,7 @@ User git
 IdentitiesOnly yes
 ```
 
+Now you should be done, and can move on to storing the public keys on the respective remote servers. There may some issues depending on host configuration and requirments that can be addressed as needed. 
 
 ## Setting up VSCode for working on remote machines
 
