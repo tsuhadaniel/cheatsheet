@@ -75,6 +75,14 @@ The key's randomart image is:
 +----[SHA256]-----+
 $ 
 ```
+### Generating multiple key pairs for auth at multiple remote servers
+In case you'd like to create multiple keys use following command so that you can create multiple keys with different associations and anmes.
+```
+ssh-keygen -t rsa -C "name@personal_email.com"
+```
+Give it a suitable name that describes the keys purpose like `id_rsa_personal`. This naming will be important later on when you set ssh config so that it know which key pair to choose depending on the host server name. More on that later. 
+
+
 
 ### Distributing public keys
 
@@ -103,7 +111,10 @@ $ ssh-keygen -p -f ~/ssh/id_rsa
 
 You'll be prompted to enter the passphrase if applicable. Tu remove the passphrase just leave the passphrase blank and hit enter. 
 
-## Managin multiple ssh key pairs
+## Organizing your ssh config file
+
+
+## Managing multiple ssh key pairs
 You may want to create multiple ssh key pair for multiple reasons. You'll may need to connect to multiple remote hosts, and for security reasons, and you want to connect to each machiene with only one key pair. Another scenario is that you may have to connect to remote host that may be work related and business related. In these cases you can issue two key pair for each remote server. This [article](https://connkat.medium.com/setting-up-multiple-ssh-keys-on-one-computer-75f068d972d9) is a quick guide on how to set up multiple key pairs.
 
 Create an ssh key for your private needs
