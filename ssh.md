@@ -109,9 +109,32 @@ $ ssh-keygen -p -f ~/ssh/id_rsa
 > Your identification has been saved with the new passphrase.
 ```
 
-You'll be prompted to enter the passphrase if applicable. Tu remove the passphrase just leave the passphrase blank and hit enter. 
+You'll be prompted to enter the passphrase if applicable. To remove the passphrase just leave the passphrase blank and hit enter. 
 
-## Organizing your ssh config file
+## Organizing your ssh config file for a single ssh key pair
+You can apply changes to .ssh config file in order preset some parameters and create an alias so that you don't have recall repetitive information when ssh-ing into a remote machine. This [article](https://linuxize.com/post/using-the-ssh-config-file/) and this [video](https://www.youtube.com/watch?v=MWqfc_fegVg) are a good summary on how to create and apply changes to your config file. Configuring the ssh config file is not only useful when managing a single key, but, more so when managing multipl
+
+The syntax is very simple and you can set some important parameters: 
+
+```
+HOST alias of the remote machiene
+    HostName {host ip adress} or {host fully qualified domain name}
+    User `{host user name}`
+    Port {port number}
+ ```
+For example, if you want to ssh into a remote server hosted ad ip address `192.168.123.123`, and the login name is `pi` and the name of the host is `raspberry` you'd have folling 
+
+```
+HOST raspbery
+    HostName 192.168.123.123
+    User pi
+    Port 2222
+```
+No you can ssh into remote machiene locate at the above ip address, as user pi, using port 2222 with just following command: 
+
+```
+ssh raspberry
+```
 
 
 ## Managing multiple ssh key pairs
