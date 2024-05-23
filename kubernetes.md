@@ -64,7 +64,7 @@ spec:
     [key]: [value] # use labels as selector
   ports:
     - port: [external port]
-      targetPort: [internal port]
+      targetPort: [pod port]
 ```
 
 #### Node Port (allows external communication) (works as a cluster IP)
