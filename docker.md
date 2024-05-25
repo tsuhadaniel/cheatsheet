@@ -97,6 +97,7 @@ Build an image
 docker build . -t [domain/project:version]
 docker build . -t [image id]
 docker build . -t campusboard/site
+docker build . -t [domain/project:version] -f [dockerfile]
 ```
 
 Copy files to container
