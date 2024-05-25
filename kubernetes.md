@@ -215,4 +215,5 @@ minikube stop
 minikube pause
 minikube unpause
 minikube ssh
+minikube delete
 ```
