@@ -38,6 +38,7 @@ docker run [options] [image] [command] [args]
 -it
 --name
 --network
+--rm # remove the container after it finishes
 ```
 
 Start (just if the container already exists)
