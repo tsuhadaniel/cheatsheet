@@ -216,4 +216,5 @@ minikube pause
 minikube unpause
 minikube ssh
 minikube delete
+minikube image ls --format table
 ```
