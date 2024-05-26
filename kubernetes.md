@@ -223,6 +223,36 @@ spec:
     type: [DirectoryOrCreate | Directory | FileOrCreate | File]
 ```
 
+#### Persistent Volume Claim (allocates space in a Persistent Volume)
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: [persistent volume claim name]
+spec:
+  accessModes:
+    - [ReadWriteOnce | ReadOnlyMany | ReadWriteMany]
+  resources:
+    requests:
+      storage: [1Gi, 2Mi]
+  storageClassName: [storage class name]
+```
+
+To use a PVC
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: [pod name]
+spec:
+  containers:
+    [pod definition]
+  volumes:
+    - name: [volume name]
+      persistentVolumeClaim:
+        claimName: [claim name]
+```
+
 ### Minikube
 
 ```bash
