@@ -214,7 +214,7 @@ metadata:
   name: [persistent volume name]
 spec:
   capacity:
-    storage: [1Gi, 2Mi]
+    storage: [1Gi | 2Mi]
   accessModes:
     - [ReadWriteOnce | ReadOnlyMany | ReadWriteMany]
   persistentVolumeReclaimPolicy: [Retain | Recycle | Delete]
