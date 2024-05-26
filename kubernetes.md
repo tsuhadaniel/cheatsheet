@@ -206,6 +206,23 @@ spec:
       type: DirectoryOrCreate
 ```
 
+#### Persistent Volume (allocates space in disk)
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: [persistent volume name]
+spec:
+  capacity:
+    storage: [1Gi, 2Mi]
+  accessModes:
+    - [ReadWriteOnce | ReadOnlyMany | ReadWriteMany]
+  persistentVolumeReclaimPolicy: [Retain | Recycle | Delete]
+  hostPath: # For local disk, check docs for cloud services
+    path: [volume path]
+    type: [DirectoryOrCreate | Directory | FileOrCreate | File]
+```
+
 ### Minikube
 
 ```bash
