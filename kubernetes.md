@@ -202,7 +202,7 @@ spec:
   volumes:
   - name: [volume name]
     hostPath:
-      path: [volume path (inside minikube)]
+      path: [volume path (inside minikube)] # Use 'minikube ssh' to access the cluster
       type: DirectoryOrCreate
 ```
 
