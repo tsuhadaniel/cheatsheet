@@ -234,7 +234,7 @@ spec:
     - [ReadWriteOnce | ReadOnlyMany | ReadWriteMany]
   resources:
     requests:
-      storage: [1Gi, 2Mi]
+      storage: [1Gi | 2Mi]
   storageClassName: [storage class name]
 ```
 
