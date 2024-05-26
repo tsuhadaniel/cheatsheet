@@ -219,7 +219,7 @@ minikube delete
 minikube image ls --format table
 ```
 
-## Import image to Minikube
+#### Import image to Minikube
 ```bash
 docker save -o [file name].tar [image]
 minikube image load [file name].tar
