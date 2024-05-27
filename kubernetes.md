@@ -207,6 +207,12 @@ spec:
       type: DirectoryOrCreate
 ```
 
+To check the files inside the container
+
+```bash
+kubectl exec -it [pod name] --container [container name] -- bash
+```
+
 #### Persistent Volume (allocates space in disk)
 ```yaml
 apiVersion: v1
