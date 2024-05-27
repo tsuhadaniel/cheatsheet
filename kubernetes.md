@@ -15,6 +15,7 @@ kubectl delete [resource type] [resource name]
 kubectl describe [resource type] [resource name]
 kubectl run [pod] --image=[docker image]
 kubectl edit pod [pod]
+kubectl logs [-f] [pod]
 
 kubectl apply -f [file]
 kubectl delete -f [file]
