@@ -222,6 +222,7 @@ spec:
   hostPath: # For local disk, check docs for cloud services
     path: [volume path]
     type: [DirectoryOrCreate | Directory | FileOrCreate | File]
+  storageClassName: [storage class name]
 ```
 
 #### Persistent Volume Claim (allocates space in a Persistent Volume)
