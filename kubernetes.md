@@ -330,6 +330,7 @@ minikube unpause
 minikube ssh
 minikube delete
 minikube image ls --format table
+minikube addons enable metrics-server
 ```
 
 #### Import image to Minikube
