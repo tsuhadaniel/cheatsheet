@@ -280,7 +280,7 @@ metadata:
   name: [stateful set]
 spec:
   serviceName: [service name]
-  replicas: 1
+  replicas: [number of replicas]
   selector:
     matchLabels:
       [key]: [value]
