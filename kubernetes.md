@@ -261,6 +261,50 @@ spec:
         claimName: [claim name]
 ```
 
+#### Storage Class (Abstraction of a disk)
+```yarn
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: [storage class name]
+provisioner: [provisioner name]
+reclaimPolicy: [Retain | Delete | Recycle]
+volumeBindingMode: [Immediate | WaitForFirstConsumer]
+```
+
+#### StatefulSet (Each pod has an ID to keep the state)
+```yarn
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: [stateful set]
+spec:
+  serviceName: [service name]
+  replicas: 1
+  selector:
+    matchLabels:
+      [key]: [value]
+  template:
+    metadata:
+      labels:
+        [key]: [value]
+    spec:
+      containers:
+        - name: [container name]
+          image: [container image]
+          volumeMounts:
+            - mountPath: [path]
+              name: [persistent storage name]
+  volumeClaimTemplates:
+    - metadata:
+        name: [persistent storage name]
+      spec:
+        accessModes: [ReadWriteOnce | ReadOnlyMany | ReadWriteMany]
+        resources:
+          requests:
+            storage: [1Gi | 2Mi]
+```
+
 ### Minikube
 
 ```bash
