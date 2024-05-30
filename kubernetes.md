@@ -277,32 +277,30 @@ volumeBindingMode: [Immediate | WaitForFirstConsumer]
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: [stateful set]
+  name: [stateful set name]
 spec:
-  serviceName: [service name]
-  replicas: [number of replicas]
-  selector:
-    matchLabels:
-      [key]: [value]
   template:
     metadata:
+      name: [pod name (template)]
       labels:
         [key]: [value]
     spec:
       containers:
         - name: [container name]
-          image: [container image]
+          image: [docker image]
+          ports:
+            - containerPort: [external port (cluster)]
           volumeMounts:
-            - mountPath: [path]
-              name: [persistent storage name]
-  volumeClaimTemplates:
-    - metadata:
-        name: [persistent storage name]
-      spec:
-        accessModes: [ReadWriteOnce | ReadOnlyMany | ReadWriteMany]
-        resources:
-          requests:
-            storage: [1Gi | 2Mi]
+            - mountPath: [container path]
+              name: [volume name]
+      volumes:
+        - name: [volume name]
+          persistentVolumeClaim:
+            claimName: [claim name]
+  replicas: [number of replicas]
+  selector:
+    matchLabels:
+      [key]: [value]
 ```
 
 ### Minikube
