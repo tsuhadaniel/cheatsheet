@@ -262,7 +262,7 @@ spec:
 ```
 
 #### Storage Class (Abstraction of a disk)
-```yarn
+```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
@@ -273,7 +273,7 @@ volumeBindingMode: [Immediate | WaitForFirstConsumer]
 ```
 
 #### StatefulSet (Each pod has an ID to keep the state)
-```yarn
+```yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
