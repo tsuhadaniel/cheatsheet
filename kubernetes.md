@@ -51,6 +51,22 @@ spec:
       envFrom: # import all from config map
         - configMapRef:
             name: [config map name]
+      readinessProbe: # Check if the pod is ready
+        httpGet:
+          path: [ready check endpoint]
+          port: [container port]
+        initialDelaySeconds: [seconds before start testing]
+        periodSeconds: [period between the tests]
+        timeoutSeconds: [test timeout]
+        failureThreshold: [number of consecutive failures to be marked as unhealthy]
+      livenessProbe: # Check if the pod is health
+        httpGet:
+          path: [ready check endpoint]
+          port: [container port]
+        initialDelaySeconds: [seconds before start testing]
+        periodSeconds: [period between the tests]
+        timeoutSeconds: [test timeout]
+        failureThreshold: [number of consecutive failures to be marked as unhealthy]
 ```
 
 #### Cluster IP (provides a stable IP for pods)
