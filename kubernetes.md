@@ -22,6 +22,8 @@ kubectl delete -f [file]
 
 kubectl exec -it [pod] -- [command]
 kubectl exec -it [pod] --container [container-name] -- [command]
+
+kubectl get sc,pv,pvc,pods,deployments,services,statefulset,hpa
 ```
 
 ### Files
@@ -67,6 +69,10 @@ spec:
         periodSeconds: [period between the tests]
         timeoutSeconds: [test timeout]
         failureThreshold: [number of consecutive failures to be marked as unhealthy]
+      resources:
+        requests:
+          CPU: [1000m = 1 core]
+          memory: [10Mi | 1Gi]
 ```
 
 #### Cluster IP (provides a stable IP for pods)
@@ -317,6 +323,28 @@ spec:
   selector:
     matchLabels:
       [key]: [value]
+```
+
+#### Horizontal Pod Autoscaler
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: [horizontal pod autoscaler]
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: [service type]
+    name: [service name]
+  minReplicas: [min]
+  maxReplicas: [max]
+  metrics:
+    - type: Resource
+      resource:
+        name: [cpu | memory]
+        target:
+          type: [Utilization | Value | AverageValue]
+          [averageUtilization | value | averageValue]: [% | absolute | average %]
 ```
 
 ### Minikube
